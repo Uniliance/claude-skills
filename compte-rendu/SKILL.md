@@ -51,4 +51,4 @@ Tu ne connais que ce qui passe par tes sessions avec la personne. Si la liste pa
 ## Mise à jour
 
 Ce skill évolue (voir `CHANGELOG.md` du dépôt). Si la personne dit qu'il a été mis à jour, relis la dernière version
-sur https://github.com/Uniliance/claud-skills et remplace l'ancienne.
+sur https://github.com/Uniliance/claude-skills et remplace l'ancienne.

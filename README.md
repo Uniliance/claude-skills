@@ -11,7 +11,7 @@ Ce dépôt est public : il ne contient jamais de clé, de lien personnel ni d'in
 
 ## L'installer
 
-Dis à ton Claude : « Installe le skill compte rendu d'Uniliance depuis https://github.com/Uniliance/claud-skills (dossier compte-rendu). »
+Dis à ton Claude : « Installe le skill compte rendu d'Uniliance depuis https://github.com/Uniliance/claude-skills (dossier compte-rendu). »
 
 ## Le mettre à jour
 
