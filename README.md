@@ -7,7 +7,7 @@ Ce dépôt est public : il ne contient jamais de clé, de lien personnel ni d'in
 
 | Skill | À quoi il sert | Dossier |
 |---|---|---|
-| Compte rendu | Dire ce qu'on fait : ajouter ses avancées au « Travail du jour » de Cosmolab | `compte-rendu/` |
+| Compte rendu | Dire ce qu'on fait : ajouter ses avancées au « Travail du jour » de Cosmolab, depuis n'importe quelle conversation | `compte-rendu/` (mode d'emploi : `compte-rendu/TUTORIEL.md`) |
 
 ## L'installer
 
