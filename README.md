@@ -11,12 +11,20 @@ Ce dépôt est public : il ne contient jamais de clé, de lien personnel ni d'in
 
 ## L'installer
 
-Dis à ton Claude : « Installe le skill compte rendu d'Uniliance depuis https://github.com/Uniliance/claude-skills (dossier compte-rendu). »
+Le plus simple : télécharge [compte-rendu.zip](https://github.com/Uniliance/claude-skills/raw/main/compte-rendu.zip)
+et ajoute-le dans Claude (Paramètres › Capacités › Skills). Le mode d'emploi est dans `compte-rendu/TUTORIEL.md`.
+
+Ou dis à ton Claude : « Installe le skill compte rendu d'Uniliance depuis https://github.com/Uniliance/claude-skills (dossier compte-rendu). »
 
 ## Le mettre à jour
 
-Quand `CHANGELOG.md` annonce une nouvelle version, dis à ton Claude :
+Quand `CHANGELOG.md` annonce une nouvelle version, retélécharge le fichier ou dis à ton Claude :
 « Le skill compte rendu a été mis à jour sur GitHub, mets-le à jour. »
+
+## Pour qui maintient ce dépôt
+
+Après chaque modification de `compte-rendu/SKILL.md`, relancer `./construire-zip.sh` et pousser le fichier `compte-rendu.zip`
+avec le reste : c'est lui que téléchargent les membres.
 
 ## Proposer une amélioration
 

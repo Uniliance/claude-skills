@@ -1,5 +1,12 @@
 # Journal des versions
 
+## 0.3 — 20 novembre 2026
+- Un seul skill pour tout le monde : chacun dépose avec sa propre **clé de dépôt**, créée dans Cosmolab › Flot › Travail du jour
+  › « Déposer depuis mon Claude ». La clé ne permet que d'ajouter des lignes à son propre Travail du jour (ni lecture, ni accès
+  aux autres) ; elle se renouvelle ou se désactive d'un clic. Sans clé, Claude donne les lignes à coller, comme avant.
+- Le dépôt direct par accès à la base est retiré du skill : plus d'identifiant dans les instructions, plus de version différente selon la personne.
+- Le skill se télécharge en un fichier (`compte-rendu.zip`) et le tutoriel part de là (mise en route en trois minutes).
+
 ## 0.2 — 20 novembre 2026
 - Deux gestes : « ajoute ça au compte rendu » (une ligne, déposée tout de suite) et « fais le point de ma session »
   (liste à valider, avec une boîte interactive quand l'interface le permet).

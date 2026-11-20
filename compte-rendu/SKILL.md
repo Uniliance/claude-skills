@@ -1,7 +1,7 @@
 ---
 name: compte-rendu
 description: Dit ce qu'on fait pour l'équipe Uniliance (Cosmolab › Flot › Travail du jour) depuis n'importe quelle conversation : « ajoute ça au compte rendu » (une ligne, tout de suite) ou « fais le point de ma session » (liste à valider).
-version: 0.2
+version: 0.3
 ---
 
 # Compte rendu de travail (Uniliance)
@@ -21,7 +21,7 @@ souvent plusieurs sessions ; chacune ajoute ses lignes au même « Travail du jo
 La personne vient de finir quelque chose et le dit : « ajoute ça au compte rendu », « mets ça dans mon travail du jour ».
 
 1. Rédige **une ligne** (voir « Écrire une ligne »), avec son thème.
-2. **Dépose-la aussitôt** (voir « Déposer »), sans demander de validation : le dépôt direct se corrige après coup.
+2. **Dépose-la aussitôt** (voir « Déposer »), sans demander de validation : un dépôt se corrige après coup.
 3. Réponds en une ou deux phrases : la ligne telle qu'elle est partie, et « Dis-moi si tu veux la corriger ou la retirer ;
    tu peux aussi le faire dans Cosmolab ». Si le dépôt direct n'est pas possible, donne la ligne dans un bloc à copier.
 
@@ -40,8 +40,8 @@ Si la personne ne précise pas ce qu'il faut noter, prends le résultat de ce qu
 
 ### 3. « Montre-moi mon compte rendu du jour »
 
-Si tu peux lire Cosmolab (mode A ci-dessous), restitue les lignes du jour par thème. Sinon, restitue ce que tu sais de
-cette session, et dis que tu ne vois pas les autres.
+Tu ne peux pas relire Cosmolab : restitue les lignes que tu as déposées ou préparées dans cette conversation, et dis que
+le reste de la journée est dans Cosmolab › Flot › Travail du jour.
 
 ## Écrire une ligne
 
@@ -55,31 +55,40 @@ cette session, et dis que tu ne vois pas les autres.
 ## Déposer
 
 Cosmolab ignore les lignes déjà présentes pour la personne ce jour-là (même thème, même texte), retire les puces et
-numéros, et accepte 80 lignes au plus par envoi. Les lignes déposées par Claude portent une petite étoile ✦.
-Le dépôt se fait toujours **au nom de la personne qui te parle**, jamais d'une autre.
+numéros, range sous aujourd'hui (heure de Paris), accepte 80 lignes au plus par envoi et 300 par jour. Les lignes déposées
+par Claude portent une petite étoile ✦ dans Cosmolab. Le dépôt se fait toujours au nom de la personne qui te parle.
 
-Choisis le premier mode disponible :
+### Mode A : avec la clé de dépôt de la personne
 
-**A. Dépôt direct, si le connecteur Supabase du projet de Cosmolab est disponible dans la conversation.**
-Le projet est `hoxaonguuzotaetucmku`. Appelle `execute_sql` avec la fonction de dépôt, en entourant le texte de `$cr$`
-pour que les apostrophes ne gênent pas :
+La personne crée sa clé dans Cosmolab › Flot › Travail du jour › « Déposer depuis mon Claude » et te la donne une fois,
+avec une phrase qui commence par « Ma clé de dépôt Cosmolab pour le compte rendu : cl_… ». La clé commence par `cl_`.
 
-```sql
-select public.cosmolab_travail_deposer(
-  '<identifiant de membre de la personne>'::uuid,
-  (now() at time zone 'Europe/Paris')::date,
-  $cr$[Cosmolab]
-Chiffres YouTube ajoutés dans l'Observatoire
-[Réseaux]
-Calendrier des publications Metricool en ligne$cr$);
+- **Garde-la** pour les conversations suivantes, si tu as une mémoire (demande-lui « Je retiens ta clé pour les prochaines
+  conversations ? » une seule fois). Si tu n'as ni la clé dans la conversation ni dans ta mémoire, demande-la, ou passe au mode B.
+- La clé ne sert qu'à ajouter des lignes au Travail du jour de la personne. Ne la répète pas, ne l'écris dans aucun
+  document ni aucune ligne de compte rendu.
+
+**Pour déposer**, ouvre cette adresse avec ton outil de lecture de pages (ou `curl` si tu as un terminal qui accède à internet),
+avec les lignes encodées pour une adresse web (les retours à la ligne en `%0A`) :
+
+```
+https://hoxaonguuzotaetucmku.supabase.co/functions/v1/cosmolab-depot?cle=<clé>&texte=<lignes encodées>
 ```
 
-La fonction renvoie le nombre de lignes ajoutées (moins que prévu si certaines étaient déjà là). L'identifiant de membre :
-si tu ne le connais pas, retrouve-le une seule fois avec l'adresse email de la personne
-(`select id from auth.users where email = '…'`, puis vérifie qu'elle figure dans `cosmolab.membres`) et ne retiens que le sien.
-N'utilise ce mode que pour déposer le compte rendu : ne lis ni ne modifie rien d'autre dans la base.
+Exemple pour les deux lignes « [Cosmolab] » puis « Chiffres YouTube ajoutés » :
+`…/cosmolab-depot?cle=cl_…&texte=%5BCosmolab%5D%0AChiffres%20YouTube%20ajout%C3%A9s`
 
-**B. Sinon, texte à coller.** Donne les lignes dans un bloc de code :
+Avec un terminal, tu peux aussi envoyer un POST JSON `{"cle": "cl_…", "texte": "…"}` à la même adresse.
+Si l'adresse est longue (plus de 4 000 caractères), envoie les lignes en plusieurs fois.
+
+La réponse est un petit JSON : `ok: true` et un `message` (« 3 lignes ajoutées à ton Travail du jour. », ou « Rien de nouveau »
+si tout était déjà là). Redonne ce message à la personne.
+Si ton outil dit que la page n'a pas pu être lue, la clé est très probablement refusée (renouvelée, désactivée ou mal copiée) :
+dis-le, propose de créer une nouvelle clé dans Cosmolab, et donne en attendant les lignes en mode B.
+
+### Mode B : texte à coller (sans clé)
+
+Donne les lignes dans un bloc de code :
 
 ```
 [Cosmolab]
@@ -89,9 +98,6 @@ Calendrier des publications Metricool en ligne
 ```
 
 et dis à la personne de le coller dans Cosmolab › Flot › Travail du jour, puis « Ajouter à ma journée ».
-
-**C. Lien de dépôt personnel (à venir).** Quand il existera, il sera décrit ici ; la personne le donnera elle-même.
-N'invente jamais de lien et n'en écris jamais dans le dépôt public.
 
 ## À ne jamais mettre
 

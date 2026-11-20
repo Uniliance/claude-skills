@@ -10,6 +10,20 @@ Chez Uniliance, on se donne une devise : **« Faire ce qu'on dit, dire ce qu'on 
 
 Le skill « compte rendu » permet à ton Claude de le faire à ta place, depuis n'importe quelle conversation.
 
+## Mise en route : trois minutes
+
+1. **Ajoute le skill à ton Claude.**
+   - Le plus simple : [télécharge le fichier](https://github.com/Uniliance/claude-skills/raw/main/compte-rendu.zip),
+     puis dans Claude : Paramètres › Capacités (ou Personnaliser) › Skills › Ajouter / téléverser un skill, et choisis ce fichier.
+   - Ou dis à ton Claude : « Installe le skill compte rendu d'Uniliance depuis
+     https://github.com/Uniliance/claude-skills (dossier compte-rendu). »
+2. **Crée ta clé de dépôt.** Dans Cosmolab › Flot › Travail du jour, clique sur **« Déposer depuis mon Claude »**, puis
+   **« Créer ma clé »**. Clique sur **« Copier la phrase pour mon Claude »** et colle-la dans une conversation avec Claude.
+   La clé n'apparaît qu'une fois : si tu la perds, tu en crées une nouvelle (l'ancienne cesse alors de marcher).
+3. **Dis à Claude de la retenir** (« retiens-la pour mes prochaines conversations ») si ton Claude a une mémoire.
+
+C'est tout. Si tu sautes l'étape 2, ça marche quand même : Claude te donne les lignes à coller dans Cosmolab.
+
 ## Les deux phrases à retenir
 
 **« Ajoute ça au compte rendu »**
@@ -19,8 +33,6 @@ Elle ne te plaît pas ? Dis « corrige » ou « retire », ou change-la toi-mêm
 **« Fais le point de ma session »**
 En fin de session ou de journée. Claude rassemble ce que tu as fait, te le présente (une boîte avec les lignes,
 ou une liste numérotée), tu modifies ou retires ce que tu veux, tu valides, et c'est déposé.
-
-Tu peux aussi dire « montre-moi mon compte rendu du jour » pour relire où tu en es.
 
 ## Ce qu'on y met
 
@@ -39,16 +51,14 @@ Tu peux aussi dire « montre-moi mon compte rendu du jour » pour relire où tu 
 Dans Cosmolab › Flot › Travail du jour : un volet « Production de <prénom> » par personne et par jour.
 Les lignes déposées par Claude portent une petite étoile ✦. Tu peux copier, modifier ou retirer **tes** lignes.
 
-## Installer le skill
+## Ta clé : ce qu'il faut savoir
 
-Dis à ton Claude : « Installe le skill compte rendu d'Uniliance depuis https://github.com/Uniliance/claude-skills
-(dossier compte-rendu). » Une fois installé, il est disponible dans toutes tes conversations, pas seulement celle-là.
+- Elle ne sert qu'à **ajouter des lignes à ton propre Travail du jour**. Elle ne permet de rien lire, et elle n'ouvre rien d'autre.
+- Garde-la pour toi, comme un mot de passe : ne la mets ni dans un document partagé ni dans un compte rendu.
+- Un doute, une perte ? Dans « Déposer depuis mon Claude », « Nouvelle clé » rend l'ancienne inutilisable ;
+  « Désactiver » coupe le dépôt jusqu'à ce que tu en crées une autre.
 
-Pour le mettre à jour quand `CHANGELOG.md` annonce une nouvelle version :
-« Le skill compte rendu a été mis à jour sur GitHub, mets-le à jour. »
+## Mettre le skill à jour
 
-## Et si le dépôt direct n'est pas possible pour moi ?
-
-Pas de souci : Claude te donne alors les lignes dans un bloc à copier. Tu les colles dans Travail du jour, tu cliques
-sur « Ajouter à ma journée », et le résultat est le même. Le dépôt direct, lui, n'est ouvert pour l'instant qu'à ceux dont
-Claude a accès à la base de Cosmolab ; un lien personnel pour tout le monde est prévu.
+Quand `CHANGELOG.md` annonce une nouvelle version, retélécharge le fichier et ajoute-le de nouveau,
+ou dis à ton Claude : « Le skill compte rendu a été mis à jour sur GitHub, mets-le à jour. »
